@@ -1,0 +1,12 @@
+{% for book in books %}
+<tr id="book-{{ book.pk }}" class="book-row">
+  <td>{{ book.title }}</td>
+  <td>{{ book.author }}</td>
+  <td>{{ book.description }}</td>
+  <td>{{ book.year }}</td>
+  <td>
+    <button class="btn btn-primary btn-sm" hx-get="{% url 'edit_book' pk=book.pk %}" hx-target="#dialog">Edit</button>
+    <button class="btn btn-light btn-sm" hx-get="{% url 'remove_book_confirmation' pk=book.pk %}" hx-target="#dialog">Delete</button>
+  </td>
+</tr>
+{% endfor %}
